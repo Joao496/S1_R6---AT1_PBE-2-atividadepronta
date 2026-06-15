@@ -78,7 +78,7 @@ export async function initializeDatabase() {
              id INT NOT NULL AUTO_INCREMENT,
             id_categoria INT NOT NULL,
             nome VARCHAR(50) NOT NULL,
-            preco DECIMAL(10,2) NOT NULL,
+            valor DECIMAL(10,2) NOT NULL,
             estoque INT NOT NULL,
             imagem VARCHAR(200) NOT NULL,
             data_cad TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
