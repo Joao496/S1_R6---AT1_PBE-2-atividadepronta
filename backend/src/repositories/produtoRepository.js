@@ -3,19 +3,20 @@ import { connection } from "../configs/Database.js";
 const produtoRepository = {
 
     criar: async (produto) => {
-        const sql = 'INSERT INTO produtos (id_categoria, nome, valor, estoque, imagem) VALUES (?,?,?,?,?)';
+
+        const sql = 'INSERT INTO produtos (id_categoria, nome, preco, estoque, imagem) VALUES (?,?,?,?,?)';
         const values = [produto.idCategoria, produto.nomeProduto, produto.valor, produto.estoque, produto.vinculoImagem];
         const [rows] = await connection.execute(sql, values);
         return rows;
-    
     },
 
     editar: async (produto) => {
-    const sql = 'UPDATE produtos SET valor = ?, estoque = ?, imagem = ? WHERE id = ?';
-    const values = [produto.valor, produto.estoque, produto.vinculoImagem, produto.id];
-    const [rows] = await connection.execute(sql, values);
-    return rows;
-},
+
+        const sql = 'UPDATE produtos SET preco = ?, estoque = ?, imagem = ? WHERE id = ?';
+        const values = [produto.valor, produto.estoque, produto.vinculoImagem, produto.id];
+        const [rows] = await connection.execute(sql, values);
+        return rows;
+    },
 
     selecionar: async () => {
         const sql = "SELECT * FROM produtos";
