@@ -5,7 +5,7 @@ const produtoRepository = {
     criar: async (produto) => {
         const sql = 'INSERT INTO produtos (id_categoria, nome, preco, estoque, imagem) VALUES (?,?,?,?,?)';
         
-        // Garantindo que estamos acessando os getters corretos da classe Produto
+       
         const values = [
             Number(produto.idCategoria), 
             String(produto.nomeProduto), 
