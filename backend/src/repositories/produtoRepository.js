@@ -3,17 +3,31 @@ import { connection } from "../configs/Database.js";
 const produtoRepository = {
 
     criar: async (produto) => {
-
         const sql = 'INSERT INTO produtos (id_categoria, nome, preco, estoque, imagem) VALUES (?,?,?,?,?)';
-        const values = [produto.idCategoria, produto.nomeProduto, produto.valor, produto.estoque, produto.vinculoImagem];
+        
+        // Garantindo que estamos acessando os getters corretos da classe Produto
+        const values = [
+            Number(produto.idCategoria), 
+            String(produto.nomeProduto), 
+            Number(produto.valor), 
+            Number(produto.estoque), 
+            String(produto.vinculoImagem)
+        ];
+        
         const [rows] = await connection.execute(sql, values);
         return rows;
     },
 
     editar: async (produto) => {
-
         const sql = 'UPDATE produtos SET preco = ?, estoque = ?, imagem = ? WHERE id = ?';
-        const values = [produto.valor, produto.estoque, produto.vinculoImagem, produto.id];
+        
+        const values = [
+            Number(produto.valor), 
+            Number(produto.estoque), 
+            String(produto.vinculoImagem), 
+            Number(produto.id)
+        ];
+        
         const [rows] = await connection.execute(sql, values);
         return rows;
     },
